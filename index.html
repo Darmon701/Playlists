@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>My Awesome Player</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  
+
+  <script src="DOM.js"></script>
+  <script src="functions.js"></script>
+  <script src="controller.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<!-- Header -->
+<form class="navbar navbar-default navbar-fixed-top" style="background-color:rgb(31, 24, 44);">
+  <div class="navbar-btn">
+    <button type="button" class="btn btn-primary navbar-left" id="leftButton" data-toggle="modal" data-target="#newFirstModal"><span
+        class="glyphicon glyphicon-plus-sign"></span> Add new
+      playlist</button>
+  </div>
+  <div class="navbar-form" id="rightButton">
+    <input type="text" class="form-control" id="searchInput" placeholder="Search Playlist">
+  </div>
+
+</form>
+<br><br><br>
+
+
+
+<!-- Player -->
+<div class="playlistPlayer">
+
+</div>
+
+<!-- Playlists Container -->
+<div class="container" id="playlistsContainer">
+
+</div>
+
+
+<!-- Add New Playlist Modal ////////////////////////////////////////// -->
+
+<!-- modal window Add New Playlist Page -->
+<div class="modal fade" id="newFirstModal" tabindex="-1" role="dialog" aria-labelledby="newPlaylistModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="newPlaylistModalLabel">Add New Playlist</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="playlist-name" class="col-form-label">Playlist Name:</label>
+            <input type="text" class="form-control" id="playlist-name">
+          </div>
+          <div class="form-group">
+            <label for="playlist-image" class="col-form-label">Playlist URL:</label>
+            <textarea class="form-control" id="playlist-image"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="resetField()">Reset Field</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#addSongsModal">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- second modal window Add Playlist Songs -->
+<div class="modal fade" id="addSongsModal" tabindex="-1" role="dialog" aria-labelledby="addSongsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="addSongsModalLabel">Add Playlist Songs</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="wrapper">
+          <div class='inputCouple'>
+            <label for="songL" class="col-form-label">Song URL:</label>
+            <input type="text" class="songURL" id="songURL0">
+            <label for="nameL" class="col-form-label">Name:</label>
+            <input type="text" class="songName" id="songName0">
+          </div>
+          <div class='inputCouple'>
+            <label for="songL" class="col-form-label">Song URL:</label>
+            <input type="text" class="songURL" id="songURL1">
+            <label for="nameL" class="col-form-label">Name:</label>
+            <input type="text" class="songName" id="songName1">
+          </div>
+          <div class='inputCouple'>
+            <label for="songL" class="col-form-label">Song URL:</label>
+            <input type="text" class="songURL" id="songURL2">
+            <label for="nameL" class="col-form-label">Name:</label>
+            <input type="text" class="songName" id="songName2">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#" id="add_field_button"><span class="glyphicon glyphicon-plus-sign"></span> Add another song</a>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="createNewPlaylist">Save & Finish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Playlist Modal ///////////////////////////////////////////// -->
+<div class="modal fade" id="editFirstModal" tabindex="-1" role="dialog" aria-labelledby="editFirstModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="editFirstModal">Edit Existing Playlist</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="playlist-name" class="col-form-label">Playlist Name:</label>
+            <input type="text" class="form-control" id="editPlaylist-name">
+          </div>
+          <div class="form-group">
+            <label for="playlist-image" class="col-form-label">Playlist URL:</label>
+            <textarea class="form-control" id="editPlaylist-image"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="resetField()">Reset Field</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" id="editNext" data-target="#editSongsModal">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Second modal window for Edit Playlist Modal -->
+<div class="modal fade" id="editSongsModal" tabindex="-1" role="dialog" aria-labelledby="editSongsModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="editSongsModal">Edit Playlist Songs</h4>
+        <button type="button" class="close" data-dismiss="modal" onclick="clearField()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="editWrapper">
+         
+        
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#" id="add_field_button"><span class="glyphicon glyphicon-plus-sign"></span> Add another song</a>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveAndUpdate" onclick="clearField()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

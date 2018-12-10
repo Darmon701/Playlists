@@ -1,0 +1,107 @@
+.centered {
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: azure;
+    border-radius: 50%;
+    width: 18%;
+    height: 19%;
+}
+
+.editIcon {
+    position: absolute;
+    top: 12%;
+    left: 52%;
+}
+
+.deleteIcon {
+    position: absolute;
+    top: 12%;
+    left: 38%;
+}
+
+.opacity {
+    opacity: 0.80;
+}
+
+.hideButton {
+    display: none;
+}
+
+.opacity:hover  .hideButton {
+    display: block;
+}
+
+.opacity:hover {
+    opacity: 1;
+}
+
+#leftButton {
+    position: absolute;
+    left: 2%;
+}
+
+#searchInput {
+    position: absolute;
+    right: 2%;
+}
+
+.divPlayer {
+    background-color: coral;
+    width: 40%;
+    height: 210px;
+    left: 28%;
+    position: relative;
+    border-radius: 100px 100px 100px 100px;
+    margin-bottom: 3%;
+}
+
+.playerExitIcon {
+    font-size: 18px;
+    background-color: azure;
+    color: black;
+    border-radius: 50px;
+    padding: 1%;
+    left: 101%;
+    top: 35%;
+    position: absolute;
+}
+
+.playerEditIcon {
+    font-size: 18px;
+    background-color: azure;
+    color: black;
+    border-radius: 50px;
+    padding: 1%;
+    left: 101%;
+    top: 55%;
+    position: absolute;
+}
+
+.playerEditIcon:hover{
+
+    text-decoration: none;
+    }
+.playerExitIcon:hover{
+
+    text-decoration: none;
+    }
+.tracks {
+    max-height:45%;
+    overflow-y: auto;
+    display: inline-block;
+    list-style-type: none;
+    text-align: left;
+    padding-right: 5%;
+}
+
+.track {
+    cursor: pointer;
+}
+
+.currentSong {
+    color: blue;
+}
+
+body{ background-color:lightslategrey;font-family:arial;text-align:center }
